@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "outputDirectory": ".",
+  "installCommand": "npm install --omit=dev",
+  "framework": null,
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/[...slug].js" },
     { "src": "/admin(.*)", "dest": "/admin/index.html" }
