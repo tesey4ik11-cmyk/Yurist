@@ -6,7 +6,7 @@ pages_build_output_dir = "."
 [[d1_databases]]
 binding = "DB"
 database_name = "narbera-db"
-database_id = "YOUR_D1_DATABASE_ID"
+database_id = "b252e12c-f985-490c-a8f3-b1e8ed55c757"
 
 # R2 Bucket (for images)
 [[r2_buckets]]
