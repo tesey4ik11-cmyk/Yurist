@@ -2,7 +2,11 @@ node_modules/
 .wrangler/
 .dev.vars
 .env
+.env.local
+.env.*.local
 *.log
 .DS_Store
 Thumbs.db
 .idea/
+.vercel/
+.playwright-mcp/

@@ -1,13 +1,17 @@
 {
   "name": "narbera-landing",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
-    "build": "echo \"Static site - no build needed\"",
-    "dev": "wrangler pages dev . --d1 DB=narbera-db",
-    "deploy": "wrangler pages deploy .",
-    "db:init": "wrangler d1 execute narbera-db --file=database/schema.sql",
-    "db:seed": "wrangler d1 execute narbera-db --file=database/seed.sql",
-    "db:reset": "wrangler d1 execute narbera-db --file=database/schema.sql && wrangler d1 execute narbera-db --file=database/seed.sql"
+    "dev": "vercel dev",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "vercel --prod",
+    "db:init": "node scripts/db-init.js"
+  },
+  "dependencies": {
+    "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "vercel": "^39.0.0"
   }
 }
