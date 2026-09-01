@@ -54,7 +54,19 @@ cd Yurist
 npm install
 ```
 
-### 2. Установите Wrangler (Cloudflare CLI)
+### 2. Настройте Cloudflare Pages (Dashboard)
+
+1. **Cloudflare Dashboard** → **Workers & Pages** → **Create a project**
+2. Подключите GitHub-репозиторий `tesey4ik11-cmyk/Yurist`
+3. При настройке:
+   - **Production branch**: `main`
+   - **Build command**: оставьте **пустым**
+   - **Build output directory**: `.`
+4. Нажмите **Save and Deploy**
+
+> **Важно**: НЕ используйте `wrangler deploy` — это для Workers. Pages проекты используют `wrangler pages deploy`.
+
+### 3. Установите Wrangler (Cloudflare CLI)
 
 ```bash
 npm install -g wrangler
