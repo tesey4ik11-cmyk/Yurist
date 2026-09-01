@@ -1,0 +1,12 @@
+{
+  "name": "narbera-landing",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler pages dev public --d1 DB=narbera-db",
+    "deploy": "wrangler pages deploy public",
+    "db:init": "wrangler d1 execute narbera-db --file=database/schema.sql",
+    "db:seed": "wrangler d1 execute narbera-db --file=database/seed.sql",
+    "db:reset": "wrangler d1 execute narbera-db --file=database/schema.sql && wrangler d1 execute narbera-db --file=database/seed.sql"
+  }
+}

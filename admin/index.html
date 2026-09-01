@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ-панель — НАРБЕРА</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <!-- Login Screen -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-logo">Н</div>
+      <h1>НАРБЕРА</h1>
+      <p>Административная панель</p>
+      <form id="login-form">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="login-email" required placeholder="admin@narbera.ru">
+        </div>
+        <div class="form-group">
+          <label>Пароль</label>
+          <input type="password" id="login-password" required placeholder="••••••••">
+        </div>
+        <div id="login-error" class="error-msg" style="display:none"></div>
+        <button type="submit" class="btn-primary btn-full">Войти</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="admin-panel" class="admin-panel" style="display:none">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">Н</div>
+        <span>НАРБЕРА</span>
+        <button id="sidebar-close" class="sidebar-close">&times;</button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#/dashboard" class="nav-item active" data-page="dashboard">📊 Дашборд</a>
+        <div class="nav-section">Основное</div>
+        <a href="#/hero" class="nav-item" data-page="hero">🎯 Первый экран</a>
+        <a href="#/about" class="nav-item" data-page="about">👤 О компании</a>
+        <a href="#/services" class="nav-item" data-page="services">📋 Услуги</a>
+        <a href="#/advantages" class="nav-item" data-page="advantages">✅ Преимущества</a>
+        <a href="#/expert" class="nav-item" data-page="expert">⚖️ Эксперт</a>
+        <a href="#/steps" class="nav-item" data-page="steps">📊 Этапы работы</a>
+        <a href="#/cases" class="nav-item" data-page="cases">📁 Кейсы</a>
+        <a href="#/reviews" class="nav-item" data-page="reviews">💬 Отзывы</a>
+        <a href="#/faq" class="nav-item" data-page="faq">❓ FAQ</a>
+        <div class="nav-section">Коммуникации</div>
+        <a href="#/inquiries" class="nav-item" data-page="inquiries">📩 Заявки</a>
+        <a href="#/contacts" class="nav-item" data-page="contacts">📞 Контакты</a>
+        <a href="#/seo" class="nav-item" data-page="seo">🔍 SEO</a>
+        <div class="nav-section">Система</div>
+        <a href="#/settings" class="nav-item" data-page="settings">⚙️ Настройки</a>
+        <a href="/" target="_blank" class="nav-item">🌐 Посмотреть сайт</a>
+        <a href="#" id="logout-btn" class="nav-item nav-logout">🚪 Выйти</a>
+      </nav>
+    </aside>
+
+    <!-- Mobile header -->
+    <div class="mobile-header">
+      <button id="menu-toggle" class="menu-toggle">☰</button>
+      <span>НАРБЕРА — Админ</span>
+      <a href="/" target="_blank" class="mobile-view-site">🌐</a>
+    </div>
+
+    <!-- Main content -->
+    <main id="main-content" class="main-content">
+      <div id="page-content"></div>
+    </main>
+  </div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast" style="display:none"></div>
+
+  <!-- Modal -->
+  <div id="modal-overlay" class="modal-overlay" style="display:none">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title"></h3>
+        <button id="modal-close" class="modal-close">&times;</button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+      <div class="modal-footer">
+        <button id="modal-cancel" class="btn-secondary">Отмена</button>
+        <button id="modal-save" class="btn-primary">Сохранить</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+name = "narbera"
+compatibility_date = "2024-12-01"
+pages_build_output_dir = "."
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "narbera-db"
+database_id = "YOUR_D1_DATABASE_ID"
+
+# R2 Bucket (for images)
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "narbera-images"
+
+# Environment variables (set via wrangler secret or dashboard)
+# ADMIN_EMAIL = "admin@narbera.ru"
+# ADMIN_PASSWORD_HASH = "sha256-hash-of-password"
+# JWT_SECRET = "random-secret-string-at-least-32-chars"
+# NOTIFY_EMAIL = "admin@narbera.ru"

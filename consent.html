@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Согласие на обработку персональных данных — НАРБЕРА</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230c1222'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='16' fill='%23b8944f'>ПР</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .legal-page { padding: 120px 0 80px; }
+    .legal-page h1 { font-size: 2rem; margin-bottom: 32px; }
+    .legal-page h2 { font-size: 1.25rem; margin: 32px 0 12px; color: var(--clr-primary); }
+    .legal-page p { margin-bottom: 16px; color: var(--clr-text-secondary); line-height: 1.7; }
+    .legal-page a { color: var(--clr-accent); text-decoration: underline; }
+    .legal-page ul { margin-bottom: 16px; padding-left: 20px; }
+    .legal-page li { margin-bottom: 8px; color: var(--clr-text-secondary); list-style: disc; }
+  </style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <div class="header__logo-icon">Н</div>
+      <span data-company>НАРБЕРА</span>
+    </a>
+    <div class="header__right">
+      <a href="index.html" class="btn btn--outline btn--sm">На главную</a>
+    </div>
+  </div>
+</header>
+
+<main class="legal-page">
+  <div class="container" style="max-width: 800px;">
+    <h1>Согласие на обработку персональных данных</h1>
+
+    <p>Настоящим я, заполняя форму на сайте <span data-company>НАРБЕРА</span>, даю своё согласие на обработку моих персональных данных.</p>
+
+    <h2>1. Перечень обрабатываемых данных</h2>
+    <p>В рамках настоящего согласия обрабатываются следующие персональные данные:</p>
+    <ul>
+      <li>Имя</li>
+      <li>Номер телефона</li>
+      <li>Адрес электронной почты</li>
+      <li>Текст сообщения</li>
+      <li>Предпочтительный способ связи</li>
+    </ul>
+
+    <h2>2. Цель обработки</h2>
+    <p>Обработка персональных данных осуществляется в целях:</p>
+    <ul>
+      <li>Предоставления бесплатной первичной юридической консультации</li>
+      <li>Связи со мной для уточнения деталей моей ситуации</li>
+      <li>Информирования о ходе оказания юридических услуг</li>
+    </ul>
+
+    <h2>3. Основание для обработки</h2>
+    <p>Основанием для обработки персональных данных является моё согласие, выраженное заполнением формы на сайте и нажатием кнопки «Получить консультацию».</p>
+
+    <h2>4. Способы обработки</h2>
+    <p>Обработка персональных данных осуществляется с использованием средств автоматизации и без использования таких средств.</p>
+
+    <h2>5. Срок действия согласия</h2>
+    <p>Настоящее согласие действительно до момента его отзыва. Я могу отозвать согласие в любой момент, направив соответствующий запрос на адрес электронной почты: <a href="mailto:info@narbera.ru" data-email>info@narbera.ru</a></p>
+
+    <h2>6. Права субъекта персональных данных</h2>
+    <p>В соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» я имею право:</p>
+    <ul>
+      <li>На получение информации, касающейся обработки моих персональных данных</li>
+      <li>На уточнение, блокирование или уничтожение моих персональных данных</li>
+      <li>На отмену настоящего согласия в любой момент</li>
+    </ul>
+
+    <h2>7. Контактные данные</h2>
+    <p>По вопросам обработки персональных данных: <a href="mailto:info@narbera.ru" data-email>info@narbera.ru</a></p>
+
+    <p style="margin-top: 40px; font-size: 0.8125rem; color: var(--clr-text-secondary);">
+      Дата последнего обновления: Январь 2025 г.
+    </p>
+  </div>
+</main>
+
+<script src="js/config.js"></script>
+<script>
+  document.querySelectorAll('[data-company]').forEach(el => el.textContent = CONFIG.company.name);
+  document.querySelectorAll('[data-email]').forEach(el => { el.href = CONFIG.contacts.emailRaw; el.textContent = CONFIG.contacts.email; });
+</script>
+</body>
+</html>
