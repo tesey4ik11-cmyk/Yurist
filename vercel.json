@@ -5,6 +5,8 @@
   "framework": null,
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/[...slug].js" },
-    { "src": "/admin(.*)", "dest": "/admin/index.html" }
+    { "handle": "filesystem" },
+    { "src": "/admin", "dest": "/admin/index.html" },
+    { "src": "/admin/", "dest": "/admin/index.html" }
   ]
 }
