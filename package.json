@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build": "echo \"Static site - no build needed\"",
     "dev": "wrangler pages dev . --d1 DB=narbera-db",
     "deploy": "wrangler pages deploy .",
     "db:init": "wrangler d1 execute narbera-db --file=database/schema.sql",
