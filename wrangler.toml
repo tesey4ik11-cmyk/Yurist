@@ -1,5 +1,6 @@
 name = "yurist"
 compatibility_date = "2024-12-01"
+pages_build_output_dir = "."
 
 # D1 Database
 [[d1_databases]]
