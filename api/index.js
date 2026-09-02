@@ -29,14 +29,14 @@ async function ensureDb() {
 }
 
 module.exports = async function handler(req) {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type,Authorization' } });
-  }
-
-  const url = new URL(req.url);
-  let apiPath = url.pathname.replace(/^\/api\//, '').replace(/^\/+|\/+$/g, '');
-
   try {
+    if (req.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type,Authorization' } });
+    }
+
+    const url = new URL(req.url);
+    let apiPath = url.pathname.replace(/^\/api\//, '').replace(/^\/+|\/+$/g, '');
+
     await ensureDb();
 
     // ============ PUBLIC API ============
@@ -263,6 +263,6 @@ module.exports = async function handler(req) {
 
     return err('Not found', 404);
   } catch (e) {
-    return err('Server error: ' + e.message, 500);
+    return json({ error: 'Server error: ' + e.message, stack: e.stack }, 500);
   }
 };
