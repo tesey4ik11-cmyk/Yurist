@@ -1,17 +1,18 @@
 const { Pool } = require('pg');
 
-const connectionString = process.env.POSTGRES_URL || process.env.POSTGRES_PRISMA_URL || process.env.DATABASE_URL;
+let pool = null;
 
-if (!connectionString) {
-  console.error('No database connection string found. Set POSTGRES_URL, POSTGRES_PRISMA_URL, or DATABASE_URL.');
+function getPool() {
+  if (!pool) {
+    const connectionString = process.env.POSTGRES_URL || process.env.POSTGRES_PRISMA_URL || process.env.DATABASE_URL;
+    pool = new Pool({
+      connectionString: connectionString || undefined,
+      ssl: connectionString ? { rejectUnauthorized: false } : false,
+      connectionTimeoutMillis: 10000,
+      max: 5,
+    });
+  }
+  return pool;
 }
 
-const pool = new Pool({
-  connectionString: connectionString || undefined,
-  ssl: connectionString ? { rejectUnauthorized: false } : false,
-  connectionTimeoutMillis: 10000,
-  idleTimeoutMillis: 10000,
-  max: 5,
-});
-
-module.exports = pool;
+module.exports = { query: (...args) => getPool().query(...args), connect: () => getPool().connect() };

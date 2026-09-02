@@ -16,16 +16,22 @@ const loginAttempts = new Map();
 
 async function ensureDb() {
   const check = await pool.query("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name='settings')");
-  if (!check.rows[0].exists) {
-    const fs = require('fs');
-    const path = require('path');
-    const schemaPath = path.join(process.cwd(), 'database', 'schema-postgres.sql');
-    if (fs.existsSync(schemaPath)) {
-      const schema = fs.readFileSync(schemaPath, 'utf8');
-      await pool.query(schema);
-    }
-    await seedDatabase();
+  if (check.rows[0].exists) return;
+  const fs = require('fs');
+  const path = require('path');
+  const candidates = [
+    path.join(process.cwd(), 'database', 'schema-postgres.sql'),
+    path.join('/var/task', 'database', 'schema-postgres.sql'),
+  ];
+  let schemaPath = null;
+  for (const c of candidates) {
+    if (fs.existsSync(c)) { schemaPath = c; break; }
   }
+  if (schemaPath) {
+    const schema = fs.readFileSync(schemaPath, 'utf8');
+    await pool.query(schema);
+  }
+  await seedDatabase();
 }
 
 module.exports = async function handler(req) {
@@ -37,15 +43,15 @@ module.exports = async function handler(req) {
     const url = new URL(req.url);
     let apiPath = url.pathname.replace(/^\/api\//, '').replace(/^\/+|\/+$/g, '');
 
-    // ============ DEBUG: check env vars (remove after testing) ============
-    if (apiPath === 'debug' && req.method === 'GET') {
-      const envKeys = Object.keys(process.env).filter(k => k.includes('POSTGRES') || k.includes('SUPABASE') || k.includes('DATABASE'));
-      const envPreview = {};
-      for (const k of envKeys) {
+    // Debug: check env (remove later)
+    if (apiPath === 'debug') {
+      const keys = Object.keys(process.env).filter(k => k.includes('POSTGRES') || k.includes('SUPABASE') || k.includes('DATABASE'));
+      const preview = {};
+      for (const k of keys) {
         const v = process.env[k];
-        envPreview[k] = v ? v.substring(0, 30) + '...' : '(empty)';
+        preview[k] = v ? v.substring(0, 40) + '...' : '(empty)';
       }
-      return json({ envVars: envPreview, total: envKeys.length });
+      return json({ envKeys: keys, preview, cwd: process.cwd() });
     }
 
     await ensureDb();
@@ -274,6 +280,6 @@ module.exports = async function handler(req) {
 
     return err('Not found', 404);
   } catch (e) {
-    return json({ error: 'Server error: ' + e.message, stack: e.stack }, 500);
+    return json({ error: e.message, stack: process.env.NODE_ENV === 'production' ? undefined : e.stack }, 500);
   }
 };
