@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 const { Pool } = require('pg');
 
 let pool = null;
@@ -8,7 +10,7 @@ function getPool() {
     pool = new Pool({
       connectionString: connectionString || undefined,
       ssl: connectionString ? { rejectUnauthorized: false } : false,
-      connectionTimeoutMillis: 10000,
+      connectionTimeoutMillis: 15000,
       max: 5,
     });
   }
