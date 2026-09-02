@@ -21,20 +21,30 @@ module.exports = async function handler(req, res) {
   recent.push(now);
   loginAttempts.set(ip, recent);
 
-  let body;
-  try {
-    const raw = typeof req.json === 'function' ? await req.json() : await new Promise((resolve) => {
-      const chunks = [];
-      req.on('data', chunk => chunks.push(chunk));
-      req.on('end', () => {
-        const s = Buffer.concat(chunks).toString();
-        try { resolve(JSON.parse(s)); } catch { resolve({}); }
-      });
-    });
-    body = raw;
-  } catch { body = {}; }
+  let body = {};
 
-  const { email, password } = body || {};
+  // Try multiple body parsing methods
+  if (req.body && typeof req.body === 'object') {
+    body = req.body;
+  } else if (typeof req.json === 'function') {
+    try { body = await req.json(); } catch {}
+  } else if (typeof req.text === 'function') {
+    try { const t = await req.text(); body = JSON.parse(t); } catch {}
+  } else {
+    // Node.js IncomingMessage
+    try {
+      body = await new Promise((resolve) => {
+        const chunks = [];
+        req.on('data', chunk => chunks.push(chunk));
+        req.on('end', () => {
+          const s = Buffer.concat(chunks).toString();
+          try { resolve(JSON.parse(s)); } catch { resolve({}); }
+        });
+      });
+    } catch {}
+  }
+
+  const { email, password } = body;
   if (!email || !password) return err(res, 'Введите email и пароль');
   const hash = hashPassword(password);
   if (email !== process.env.ADMIN_EMAIL || hash !== process.env.ADMIN_PASSWORD_HASH) {
