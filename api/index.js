@@ -34,15 +34,12 @@ module.exports = async function handler(req) {
   }
 
   const url = new URL(req.url);
-  // Extract path after /api/
   let apiPath = url.pathname.replace(/^\/api\//, '').replace(/^\/+|\/+$/g, '');
 
   try {
     await ensureDb();
 
     // ============ PUBLIC API ============
-
-    // GET /api/site
     if (apiPath === 'site' && req.method === 'GET') {
       const settingsRows = await pool.query('SELECT key, value FROM settings');
       const settings = {};
@@ -53,7 +50,6 @@ module.exports = async function handler(req) {
       return json({ settings, expert, contacts, seo });
     }
 
-    // Public list endpoints
     const publicRoutes = {
       services: 'SELECT * FROM services WHERE active=1 ORDER BY sort_order ASC',
       advantages: 'SELECT * FROM advantages WHERE active=1 ORDER BY sort_order ASC',
@@ -67,13 +63,11 @@ module.exports = async function handler(req) {
       return json(rows.rows);
     }
 
-    // GET /api/contacts
     if (apiPath === 'contacts' && req.method === 'GET') {
       const row = (await pool.query('SELECT * FROM contacts LIMIT 1')).rows[0] || {};
       return json(row);
     }
 
-    // POST /api/inquiries
     if (apiPath === 'inquiries' && req.method === 'POST') {
       const body = await req.json();
       const name = sanitize(body.name || '');
@@ -85,7 +79,7 @@ module.exports = async function handler(req) {
       return json({ ok: true, message: 'Заявка отправлена' }, 201);
     }
 
-    // ============ ADMIN: POST /api/admin/login ============
+    // ============ ADMIN LOGIN ============
     if (apiPath === 'admin/login' && req.method === 'POST') {
       const ip = req.headers['x-forwarded-for'] || 'unknown';
       const now = Date.now();
@@ -114,12 +108,10 @@ module.exports = async function handler(req) {
 
     const adminPart = apiPath.replace('admin/', '');
 
-    // GET /api/admin/me
     if (adminPart === 'me' && req.method === 'GET') {
       return json({ email: user.email });
     }
 
-    // GET /api/admin/dashboard
     if (adminPart === 'dashboard' && req.method === 'GET') {
       const inquiries = (await pool.query('SELECT COUNT(*) as c FROM inquiries')).rows[0];
       const newInquiries = (await pool.query("SELECT COUNT(*) as c FROM inquiries WHERE status='new'")).rows[0];
@@ -132,7 +124,6 @@ module.exports = async function handler(req) {
       });
     }
 
-    // Settings
     if (adminPart === 'settings' && req.method === 'GET') {
       const rows = await pool.query('SELECT key, value FROM settings');
       const settings = {};
@@ -148,7 +139,6 @@ module.exports = async function handler(req) {
       return json({ ok: true });
     }
 
-    // Expert
     if (adminPart === 'expert' && req.method === 'GET') {
       const row = (await pool.query('SELECT * FROM expert LIMIT 1')).rows[0] || {};
       return json(row);
@@ -170,7 +160,6 @@ module.exports = async function handler(req) {
       return json({ ok: true });
     }
 
-    // Contacts
     if (adminPart === 'contacts' && req.method === 'GET') {
       const row = (await pool.query('SELECT * FROM contacts LIMIT 1')).rows[0] || {};
       return json(row);
@@ -192,7 +181,6 @@ module.exports = async function handler(req) {
       return json({ ok: true });
     }
 
-    // SEO
     if (adminPart === 'seo' && req.method === 'GET') {
       const row = (await pool.query("SELECT * FROM seo WHERE page='home' LIMIT 1")).rows[0] || {};
       return json(row);
@@ -214,7 +202,6 @@ module.exports = async function handler(req) {
       return json({ ok: true });
     }
 
-    // Inquiries (admin)
     if (adminPart === 'inquiries' && req.method === 'GET') {
       const rows = await pool.query('SELECT * FROM inquiries ORDER BY created_at DESC');
       return json(rows.rows);
