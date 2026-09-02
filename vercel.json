@@ -1,11 +1,5 @@
 {
   "version": 2,
   "framework": null,
-  "installCommand": "npm install --omit=dev",
-  "rewrites": [
-    { "source": "/api/:path+", "destination": "/api/index" },
-    { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin/", "destination": "/admin/index.html" },
-    { "source": "/admin/:path*", "destination": "/admin/index.html" }
-  ]
+  "installCommand": "npm install --omit=dev"
 }
