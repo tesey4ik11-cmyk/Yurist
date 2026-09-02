@@ -1,12 +1,11 @@
-function json(data, status = 200) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-  });
+function json(res, data, status = 200) {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.status(status).json(data);
 }
 
-function err(msg, status = 400) {
-  return json({ error: msg }, status);
+function err(res, msg, status = 400) {
+  json(res, { error: msg }, status);
 }
 
 function sanitize(str) {
