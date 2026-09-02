@@ -1,7 +1,7 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const pool = require('../lib/db');
-const { authenticate } = require('../lib/auth');
+const { authenticate, hashPassword, createToken } = require('../lib/auth');
 const { json, err, sanitizeObj } = require('../lib/helpers');
 const { seedDatabase } = require('../lib/seed');
 
@@ -13,6 +13,8 @@ const crudTables = {
   reviews: { cols: ['author_name', 'city', 'text', 'rating', 'date', 'photo_url', 'published', 'is_demo'] },
   faq: { cols: ['question', 'answer', 'sort_order', 'active'] },
 };
+
+const loginAttempts = new Map();
 
 async function ensureDb() {
   const check = await pool.query("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name='settings')");
@@ -27,6 +29,13 @@ async function ensureDb() {
   await seedDatabase();
 }
 
+async function getBody(req) {
+  if (req.body && typeof req.body === 'object' && Object.keys(req.body).length > 0) return req.body;
+  try { return await req.json(); } catch {}
+  try { return await req.text().then(t => JSON.parse(t)); } catch {}
+  return {};
+}
+
 module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -36,20 +45,40 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    const url = new URL(req.url, 'http://localhost');
+    const fullPath = url.pathname.replace(/^\/api\/admin\//, '').replace(/^\/+|\/+$/g, '');
+
+    // POST /api/admin/login (no auth required)
+    if (fullPath === 'login' && req.method === 'POST') {
+      const ip = req.headers['x-forwarded-for'] || 'unknown';
+      const now = Date.now();
+      const attempts = loginAttempts.get(ip) || [];
+      const recent = attempts.filter(t => now - t < 60000);
+      if (recent.length >= 5) return err(res, 'Слишком много попыток.', 429);
+      recent.push(now);
+      loginAttempts.set(ip, recent);
+
+      const body = await getBody(req);
+      const { email, password } = body;
+      if (!email || !password) return err(res, 'Введите email и пароль');
+      const hash = hashPassword(password);
+      if (email !== process.env.ADMIN_EMAIL || hash !== process.env.ADMIN_PASSWORD_HASH) {
+        return err(res, 'Неверный email или пароль', 401);
+      }
+      const token = createToken(email, process.env.JWT_SECRET);
+      return json(res, { token, email });
+    }
+
+    // All other admin routes require auth
     const user = authenticate(req);
     if (!user) return err(res, 'Не авторизован', 401);
 
     await ensureDb();
 
-    const url = new URL(req.url, 'http://localhost');
-    const fullPath = url.pathname.replace(/^\/api\/admin\//, '').replace(/^\/+|\/+$/g, '');
-
-    // /api/admin/me
     if (fullPath === 'me' && req.method === 'GET') {
       return json(res, { email: user.email });
     }
 
-    // /api/admin/dashboard
     if (fullPath === 'dashboard' && req.method === 'GET') {
       const inquiries = (await pool.query('SELECT COUNT(*) as c FROM inquiries')).rows[0];
       const newInquiries = (await pool.query("SELECT COUNT(*) as c FROM inquiries WHERE status='new'")).rows[0];
@@ -62,7 +91,6 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    // Settings
     if (fullPath === 'settings' && req.method === 'GET') {
       const rows = await pool.query('SELECT key, value FROM settings');
       const settings = {};
@@ -78,7 +106,6 @@ module.exports = async function handler(req, res) {
       return json(res, { ok: true });
     }
 
-    // Expert
     if (fullPath === 'expert' && req.method === 'GET') {
       const row = (await pool.query('SELECT * FROM expert LIMIT 1')).rows[0] || {};
       return json(res, row);
@@ -100,7 +127,6 @@ module.exports = async function handler(req, res) {
       return json(res, { ok: true });
     }
 
-    // Contacts
     if (fullPath === 'contacts' && req.method === 'GET') {
       const row = (await pool.query('SELECT * FROM contacts LIMIT 1')).rows[0] || {};
       return json(res, row);
@@ -122,7 +148,6 @@ module.exports = async function handler(req, res) {
       return json(res, { ok: true });
     }
 
-    // SEO
     if (fullPath === 'seo' && req.method === 'GET') {
       const row = (await pool.query("SELECT * FROM seo WHERE page='home' LIMIT 1")).rows[0] || {};
       return json(res, row);
@@ -144,7 +169,6 @@ module.exports = async function handler(req, res) {
       return json(res, { ok: true });
     }
 
-    // Inquiries
     if (fullPath === 'inquiries' && req.method === 'GET') {
       const rows = await pool.query('SELECT * FROM inquiries ORDER BY created_at DESC');
       return json(res, rows.rows);
@@ -166,7 +190,6 @@ module.exports = async function handler(req, res) {
       }
     }
 
-    // Generic CRUD
     for (const [table, config] of Object.entries(crudTables)) {
       if (fullPath === table && req.method === 'GET') {
         const rows = await pool.query(`SELECT * FROM ${table} ORDER BY sort_order ASC, id DESC`);
@@ -209,10 +232,3 @@ module.exports = async function handler(req, res) {
     return json(res, { error: e.message }, 500);
   }
 };
-
-async function getBody(req) {
-  const chunks = [];
-  for await (const chunk of req) chunks.push(chunk);
-  const raw = Buffer.concat(chunks).toString();
-  try { return JSON.parse(raw); } catch { return {}; }
-}
