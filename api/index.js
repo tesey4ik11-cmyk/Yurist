@@ -37,6 +37,17 @@ module.exports = async function handler(req) {
     const url = new URL(req.url);
     let apiPath = url.pathname.replace(/^\/api\//, '').replace(/^\/+|\/+$/g, '');
 
+    // ============ DEBUG: check env vars (remove after testing) ============
+    if (apiPath === 'debug' && req.method === 'GET') {
+      const envKeys = Object.keys(process.env).filter(k => k.includes('POSTGRES') || k.includes('SUPABASE') || k.includes('DATABASE'));
+      const envPreview = {};
+      for (const k of envKeys) {
+        const v = process.env[k];
+        envPreview[k] = v ? v.substring(0, 30) + '...' : '(empty)';
+      }
+      return json({ envVars: envPreview, total: envKeys.length });
+    }
+
     await ensureDb();
 
     // ============ PUBLIC API ============
