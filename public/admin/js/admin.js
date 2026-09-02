@@ -10,9 +10,17 @@
 
   // --- API Client ---
   async function api(path, method = 'GET', body = null) {
-    const opts = { method, headers: { 'Content-Type': 'application/json' } };
+    const effectiveMethod = method.toUpperCase();
+    const isMutation = effectiveMethod === 'PUT' || effectiveMethod === 'DELETE';
+    const sendMethod = isMutation ? 'POST' : effectiveMethod;
+    const opts = { method: sendMethod, headers: { 'Content-Type': 'application/json' } };
     if (token) opts.headers['Authorization'] = `Bearer ${token}`;
-    if (body) opts.body = JSON.stringify(body);
+    if (body) {
+      const payload = isMutation ? { ...body, _method: effectiveMethod } : body;
+      opts.body = JSON.stringify(payload);
+    } else if (isMutation) {
+      opts.body = JSON.stringify({ _method: effectiveMethod });
+    }
     const res = await fetch(`${API}/${path}`, opts);
     if (res.status === 401) { logout(); throw new Error('Сессия истекла'); }
     const data = await res.json();

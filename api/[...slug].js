@@ -77,8 +77,17 @@ module.exports = async function handler(req, res) {
 };
 
 async function getBody(req) {
-  const chunks = [];
-  for await (const chunk of req) chunks.push(chunk);
-  const raw = Buffer.concat(chunks).toString();
-  try { return JSON.parse(raw); } catch { return {}; }
+  if (req.body && typeof req.body === 'object' && Object.keys(req.body).length > 0) return req.body;
+  try { return await req.json(); } catch {}
+  try { return await req.text().then(t => JSON.parse(t)); } catch {}
+  try {
+    return await new Promise((resolve) => {
+      const chunks = [];
+      req.on('data', chunk => chunks.push(chunk));
+      req.on('end', () => {
+        const s = Buffer.concat(chunks).toString();
+        try { resolve(JSON.parse(s)); } catch { resolve({}); }
+      });
+    });
+  } catch { return {}; }
 }
