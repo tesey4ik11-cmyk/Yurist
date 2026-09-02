@@ -211,9 +211,8 @@ module.exports = async function handler(req, res) {
 };
 
 async function getBody(req) {
-  return new Promise((resolve) => {
-    let body = '';
-    req.on('data', chunk => { body += chunk; });
-    req.on('end', () => { try { resolve(JSON.parse(body)); } catch { resolve({}); } });
-  });
+  const chunks = [];
+  for await (const chunk of req) chunks.push(chunk);
+  const raw = Buffer.concat(chunks).toString();
+  try { return JSON.parse(raw); } catch { return {}; }
 }
