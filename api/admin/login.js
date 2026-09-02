@@ -21,8 +21,20 @@ module.exports = async function handler(req, res) {
   recent.push(now);
   loginAttempts.set(ip, recent);
 
-  const body = await getBody(req);
-  const { email, password } = body;
+  let body;
+  try {
+    const raw = typeof req.json === 'function' ? await req.json() : await new Promise((resolve) => {
+      const chunks = [];
+      req.on('data', chunk => chunks.push(chunk));
+      req.on('end', () => {
+        const s = Buffer.concat(chunks).toString();
+        try { resolve(JSON.parse(s)); } catch { resolve({}); }
+      });
+    });
+    body = raw;
+  } catch { body = {}; }
+
+  const { email, password } = body || {};
   if (!email || !password) return err(res, 'Введите email и пароль');
   const hash = hashPassword(password);
   if (email !== process.env.ADMIN_EMAIL || hash !== process.env.ADMIN_PASSWORD_HASH) {
@@ -31,10 +43,3 @@ module.exports = async function handler(req, res) {
   const token = createToken(email, process.env.JWT_SECRET);
   return json(res, { token, email });
 };
-
-async function getBody(req) {
-  const chunks = [];
-  for await (const chunk of req) chunks.push(chunk);
-  const raw = Buffer.concat(chunks).toString();
-  try { return JSON.parse(raw); } catch { return {}; }
-}
