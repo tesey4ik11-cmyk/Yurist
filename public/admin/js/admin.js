@@ -178,14 +178,14 @@
       </div>`;
     c.querySelectorAll('.status-select').forEach(sel => {
       sel.onchange = async () => {
-        await api(`admin/inquiries/${sel.dataset.id}`, 'PUT', { status: sel.value });
+        await api('admin/inquiries', 'PUT', { id: sel.dataset.id, status: sel.value });
         toast('Статус обновлён');
       };
     });
     c.querySelectorAll('.del-inq').forEach(btn => {
       btn.onclick = async () => {
         if (!confirm('Удалить заявку?')) return;
-        await api(`admin/inquiries/${btn.dataset.id}`, 'DELETE');
+        await api('admin/inquiries', 'DELETE', { id: btn.dataset.id });
         toast('Удалено');
         renderInquiriesPage(c);
       };
@@ -455,7 +455,7 @@
         const item = items.find(i => i.id == btn.dataset.id);
         openModal(`Редактировать: ${crudTitles[entity]}`, buildCrudForm(fields, item), async () => {
           const data = collectCrudForm(fields);
-          await api(`${entity}/${btn.dataset.id}`, 'PUT', data);
+          await api(entity, 'PUT', { ...data, id: btn.dataset.id });
         });
       };
     });
@@ -463,7 +463,7 @@
     c.querySelectorAll('.crud-del').forEach(btn => {
       btn.onclick = async () => {
         if (!confirm('Удалить запись?')) return;
-        await api(`${entity}/${btn.dataset.id}`, 'DELETE');
+        await api(entity, 'DELETE', { id: btn.dataset.id });
         toast('Удалено');
         renderCrudEditor(c, entity);
       };

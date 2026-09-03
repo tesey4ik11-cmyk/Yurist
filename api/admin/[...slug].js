@@ -176,23 +176,27 @@ module.exports = async function handler(req, res) {
       return json(res, { ok: true });
     }
 
-    if (adminSlug === 'inquiries' && method === 'GET') {
-      const rows = await pool.query('SELECT * FROM inquiries ORDER BY created_at DESC');
-      return json(res, rows.rows);
-    }
-
-    const inqMatch = adminSlug.match(/^inquiries\/(\d+)$/);
-    if (inqMatch && method !== 'GET') {
-      const id = parseInt(inqMatch[1]);
-      if (method === 'DELETE') {
-        await pool.query('DELETE FROM inquiries WHERE id=$1', [id]);
-        return json(res, { ok: true });
+    if (adminSlug === 'inquiries') {
+      if (method === 'GET') {
+        const rows = await pool.query('SELECT * FROM inquiries ORDER BY created_at DESC');
+        return json(res, rows.rows);
       }
       const sanitized = sanitizeObj(body);
       delete sanitized._method;
-      if (Object.keys(sanitized).length) {
-        const sets = Object.keys(sanitized).map((k,i) => `${k}=$${i+1}`).join(',');
-        await pool.query(`UPDATE inquiries SET ${sets},updated_at=NOW() WHERE id=$${Object.keys(sanitized).length+1}`, [...Object.values(sanitized), id]);
+      const itemId = sanitized.id || body.id;
+      delete sanitized.id;
+      delete body.id;
+
+      if (method === 'DELETE' && itemId) {
+        await pool.query('DELETE FROM inquiries WHERE id=$1', [itemId]);
+        return json(res, { ok: true });
+      }
+      if ((method === 'PUT' || method === 'POST') && itemId) {
+        if (Object.keys(sanitized).length) {
+          const sets = Object.keys(sanitized).map((k,i) => `${k}=$${i+1}`).join(',');
+          await pool.query(`UPDATE inquiries SET ${sets},updated_at=NOW() WHERE id=$${Object.keys(sanitized).length+1}`, [...Object.values(sanitized), itemId]);
+        }
+        return json(res, { ok: true });
       }
       return json(res, { ok: true });
     }
@@ -202,36 +206,32 @@ module.exports = async function handler(req, res) {
         const rows = await pool.query(`SELECT * FROM ${table} ORDER BY sort_order ASC, id DESC`);
         return json(res, rows.rows);
       }
-      if (adminSlug === table && (method === 'POST' || method === 'PUT')) {
+      if (adminSlug === table && (method === 'POST' || method === 'PUT' || method === 'DELETE')) {
         const sanitized = sanitizeObj(body);
         delete sanitized._method;
-        const cols = Object.keys(sanitized).filter(k => config.cols.includes(k));
-        const vals = cols.map(k => sanitized[k]);
-        const ph = cols.map((_,i) => `$${i+1}`).join(',');
-        const result = await pool.query(`INSERT INTO ${table} (${cols.join(',')}) VALUES (${ph}) RETURNING id`, vals);
-        return json(res, { ok: true, id: result.rows[0].id }, 201);
-      }
-      const idMatch = adminSlug.match(new RegExp(`^${table}\\/(\\d+)$`));
-      if (idMatch) {
-        const id = parseInt(idMatch[1]);
-        if (method === 'GET') {
-          const row = (await pool.query(`SELECT * FROM ${table} WHERE id=$1`, [id])).rows[0];
-          return row ? json(res, row) : err(res, 'Not found', 404);
-        }
-        if (method === 'DELETE') {
-          await pool.query(`DELETE FROM ${table} WHERE id=$1`, [id]);
+        const itemId = sanitized.id || body.id;
+        delete sanitized.id;
+        delete body.id;
+
+        if (method === 'DELETE' && itemId) {
+          await pool.query(`DELETE FROM ${table} WHERE id=$1`, [itemId]);
           return json(res, { ok: true });
         }
-        if (method === 'PUT' || method === 'POST') {
-          const sanitized = sanitizeObj(body);
-          delete sanitized._method;
+        if ((method === 'PUT' || method === 'POST') && itemId) {
           const cols = Object.keys(sanitized).filter(k => config.cols.includes(k));
           const vals = cols.map(k => sanitized[k]);
           if (cols.length) {
             const sets = cols.map((k,i) => `${k}=$${i+1}`).join(',');
-            await pool.query(`UPDATE ${table} SET ${sets},updated_at=NOW() WHERE id=$${cols.length+1}`, [...vals, id]);
+            await pool.query(`UPDATE ${table} SET ${sets},updated_at=NOW() WHERE id=$${cols.length+1}`, [...vals, itemId]);
           }
           return json(res, { ok: true });
+        }
+        if (method === 'POST' && !itemId) {
+          const cols = Object.keys(sanitized).filter(k => config.cols.includes(k));
+          const vals = cols.map(k => sanitized[k]);
+          const ph = cols.map((_,i) => `$${i+1}`).join(',');
+          const result = await pool.query(`INSERT INTO ${table} (${cols.join(',')}) VALUES (${ph}) RETURNING id`, vals);
+          return json(res, { ok: true, id: result.rows[0].id }, 201);
         }
       }
     }
