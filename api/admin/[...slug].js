@@ -1,9 +1,9 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-const pool = require('../../lib/db');
-const { authenticate, hashPassword, createToken } = require('../../lib/auth');
-const { json, err, sanitizeObj } = require('../../lib/helpers');
-const { seedDatabase } = require('../../lib/seed');
+const pool = require('../lib/db');
+const { authenticate, hashPassword, createToken } = require('../lib/auth');
+const { json, err, sanitizeObj } = require('../lib/helpers');
+const { seedDatabase } = require('../lib/seed');
 const fs = require('fs');
 const path = require('path');
 
