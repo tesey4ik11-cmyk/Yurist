@@ -71,17 +71,22 @@ module.exports = async function handler(req, res) {
     if (adminSlug === 'upload' && req.method === 'POST') {
       const user = authenticate(req);
       if (!user) return err(res, 'Не авторизован', 401);
-      const { data } = body;
+      const { data, filename } = body;
       if (!data) return err(res, 'Нет данных файла');
       const match = data.match(/^data:(image\/\w+);base64,(.+)$/);
       if (!match) return err(res, 'Неверный формат');
       const ext = match[1].split('/')[1] || 'png';
-      const buf = Buffer.from(match[2], 'base64');
-      const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-      if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
-      const name = `${Date.now()}-${Math.random().toString(36).slice(2,8)}.${ext}`;
-      fs.writeFileSync(path.join(uploadDir, name), buf);
-      return json(res, { url: `/uploads/${name}` });
+      try {
+        const buf = Buffer.from(match[2], 'base64');
+        const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+        if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+        const baseName = filename ? filename.replace(/[^a-zA-Z0-9._-]/g, '_').replace(/\.[^.]+$/, '') : 'upload';
+        const name = `${baseName}-${Date.now()}.${ext}`;
+        fs.writeFileSync(path.join(uploadDir, name), buf);
+        return json(res, { url: `/uploads/${name}` });
+      } catch (e) {
+        return json(res, { url: data });
+      }
     }
 
     // Auth required
@@ -142,8 +147,11 @@ module.exports = async function handler(req, res) {
         const row = (await pool.query('SELECT * FROM contacts LIMIT 1')).rows[0] || {};
         return json(res, row);
       }
-      const sanitized = sanitizeObj(body);
-      delete sanitized._method;
+      const allowed = ['phone','email','telegram','vk','max_url','address','work_hours','map_url'];
+      const raw = sanitizeObj(body);
+      delete raw._method;
+      const sanitized = {};
+      for (const [k,v] of Object.entries(raw)) { if (allowed.includes(k)) sanitized[k] = v; }
       const existing = (await pool.query('SELECT id FROM contacts LIMIT 1')).rows[0];
       if (existing) {
         const sets = Object.keys(sanitized).map((k,i) => `${k}=$${i+1}`).join(',');

@@ -24,15 +24,24 @@
 
   async function uploadImage(file) {
     return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = async () => {
-        try {
-          const data = await api('admin/upload', 'POST', { data: reader.result, filename: file.name });
-          resolve(data.url);
-        } catch (e) { reject(e); }
+      const maxSize = 800;
+      const canvas = document.createElement('canvas');
+      const img = new Image();
+      img.onload = () => {
+        let w = img.width, h = img.height;
+        if (w > maxSize || h > maxSize) {
+          if (w > h) { h = Math.round(h * maxSize / w); w = maxSize; }
+          else { w = Math.round(w * maxSize / h); h = maxSize; }
+        }
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+        api('admin/upload', 'POST', { data: dataUrl, filename: file.name })
+          .then(data => resolve(data.url))
+          .catch(reject);
       };
-      reader.onerror = () => reject(new Error('Ошибка чтения файла'));
-      reader.readAsDataURL(file);
+      img.onerror = () => reject(new Error('Ошибка чтения изображения'));
+      img.src = URL.createObjectURL(file);
     });
   }
 
@@ -427,14 +436,18 @@
           <div class="field"><label>Часы работы</label><input type="text" data-field-key="work_hours" value="${esc(contacts.work_hours || '')}"></div>
         </div>
         <div class="field"><label>Адрес</label><input type="text" data-field-key="address" value="${esc(contacts.address || '')}"></div>
-        <div class="field"><label>Регион</label><input type="text" data-field-key="region" value="${esc(contacts.region || settings.region || '')}"></div>
+        <div class="field"><label>Регион</label><input type="text" data-field-key="region" value="${esc(settings.region || '')}"></div>
         <div class="field"><label>Карта (iframe src)</label><input type="text" data-field-key="map_url" value="${esc(contacts.map_url || '')}"></div>
       </div>`;
 
     document.getElementById('save-section-btn').onclick = async () => {
       const data = {};
       form.querySelectorAll('[data-field-key]').forEach(el => { data[el.dataset.fieldKey] = el.value; });
-      await api('admin/contacts', 'POST', data);
+      const { region, ...contactData } = data;
+      await api('admin/contacts', 'POST', contactData);
+      if (region !== undefined) {
+        await api('admin/settings', 'POST', { key: 'region', value: region });
+      }
       toast('Сохранено');
       refreshPreview();
     };

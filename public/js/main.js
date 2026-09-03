@@ -211,7 +211,7 @@ function populateAllContent(data) {
   setTextById('contact-email', c.email);
   setTextById('contact-address', c.address);
   setTextById('contact-hours', c.work_hours);
-  setTextById('contact-region', c.region);
+  setTextById('contact-region', s.region || c.region);
   setTextById('contacts-title', s.contacts_title);
   setTextById('contacts-subtitle', s.contacts_subtitle);
 
@@ -367,12 +367,12 @@ function populateContactLinks() {
   document.querySelectorAll('[data-phone]').forEach(el => {
     const phone = CONFIG.getContact('phone');
     el.href = 'tel:' + phone.replace(/[^+\d]/g, '');
-    el.textContent = phone;
+    if (!el.classList.contains('btn')) el.textContent = phone;
   });
   document.querySelectorAll('[data-email]').forEach(el => {
     const email = CONFIG.getContact('email');
     el.href = 'mailto:' + email;
-    el.textContent = email;
+    if (!el.classList.contains('btn')) el.textContent = email;
   });
   document.querySelectorAll('[data-telegram]').forEach(el => { el.href = CONFIG.getContact('telegram'); });
   document.querySelectorAll('[data-vk]').forEach(el => { el.href = CONFIG.getContact('vk'); });
