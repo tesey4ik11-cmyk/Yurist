@@ -615,6 +615,15 @@
   function statusClass(s) { return { new: 'new', in_progress: 'progress', completed: 'done', archive: 'archive' }[s] || 'new'; }
   function statusLabel(s) { return { new: 'Новая', in_progress: 'В работе', completed: 'Завершена', archive: 'Архив' }[s] || s; }
 
+  // ===== NAV CLICK HANDLERS =====
+  document.querySelectorAll('.nav-item[data-page]').forEach(item => {
+    item.onclick = (e) => {
+      e.preventDefault();
+      const page = item.dataset.page;
+      if (page) location.hash = '#/' + page;
+    };
+  });
+
   // ===== INIT =====
   document.getElementById('login-form').onsubmit = async (e) => {
     e.preventDefault();
