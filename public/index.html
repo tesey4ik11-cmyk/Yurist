@@ -5,268 +5,155 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Юридические услуги в Ярославской области — НАРБЕРА</title>
   <meta name="description" content="Юридическая помощь: банкротство физических лиц, взыскание долгов, семейное, трудовое и жилищное право. Бесплатная консультация в Ярославской области.">
-  <meta name="keywords" content="юрист Ярославль, банкротство физических лиц, юридические услуги, избавиться от долгов, семейный юрист, трудовой юрист, Ярославская область">
+  <meta name="keywords" content="юрист Ярославль, банкротство физических лиц, юридические услуги">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://narbera.ru/">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Юридические услуги — НАРБЕРА">
-  <meta property="og:description" content="Юридическая помощь в Ярославской области: банкротство, взыскание долгов, семейное и трудовое право. Бесплатная консультация.">
+  <meta property="og:description" content="Юридическая помощь в Ярославской области.">
   <meta property="og:url" content="https://narbera.ru/">
   <meta property="og:locale" content="ru_RU">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230c1222'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='16' fill='%23b8944f'>Н</text></svg>">
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
-
-  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LegalService",
     "name": "НАРБЕРА",
-    "description": "Юридическая помощь: банкротство физических лиц, взыскание долгов, семейное, трудовое и жилищное право в Ярославской области",
-    "areaServed": {
-      "@type": "State",
-      "name": "Ярославская область"
-    },
-    "serviceType": ["Банкротство физических лиц", "Семейное право", "Трудовое право", "Жилищное право", "Взыскание долгов"],
+    "description": "Юридическая помощь: банкротство физических лиц, взыскание долгов, семейное, трудовое и жилищное право",
+    "areaServed": { "@type": "State", "name": "Ярославская область" },
     "telephone": "+7 (4852) 00-00-00",
-    "email": "info@narbera.ru",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Ярославль",
-      "addressRegion": "Ярославская область",
-      "addressCountry": "RU"
-    }
+    "email": "info@narbera.ru"
   }
   </script>
 </head>
 <body>
 
-<!-- ===================== HEADER ===================== -->
+<!-- HEADER -->
 <header class="header" id="header">
   <div class="container header__inner">
     <a href="#" class="header__logo">
       <div class="header__logo-icon">Н</div>
-      <span data-company>НАРБЕРА</span>
+      <span data-company data-edit-key="company_name" data-edit-section="general">НАРБЕРА</span>
     </a>
-
     <div class="header__center">
       <div class="header__info">
-        Юридическая помощь в Ярославской области
-        <strong>Банкротство &middot; Суды &middot; Консультации</strong>
+        <span data-edit-key="header_info" data-edit-section="header">Юридическая помощь в Ярославской области</span>
+        <strong data-edit-key="header_info_bold" data-edit-section="header">Банкротство &middot; Суды &middot; Консультации</strong>
       </div>
     </div>
-
     <div class="header__right">
       <a href="tel:+74852000000" class="header__phone" data-phone>+7 (4852) 00-00-00</a>
-      <a href="#form" class="btn btn--primary btn--sm header__cta">Получить консультацию</a>
+      <a href="#form" class="btn btn--primary btn--sm header__cta" data-edit-key="header_cta" data-edit-section="header" id="header-cta">Получить консультацию</a>
       <button class="mobile-menu-btn" aria-label="Меню" onclick="document.querySelector('.header__center').classList.toggle('show')">&#9776;</button>
     </div>
   </div>
 </header>
 
-<!-- ===================== HERO ===================== -->
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="container hero__grid">
     <div class="hero__content">
-      <div class="hero__badge reveal" id="hero-badge">
+      <div class="hero__badge reveal" id="hero-badge" data-edit-key="hero_badge" data-edit-section="hero">
         <span>&#9670;</span> Бесплатная первичная консультация
       </div>
-
-      <h1 class="hero__title reveal reveal-delay-1" id="hero-title">
+      <h1 class="hero__title reveal reveal-delay-1" id="hero-title" data-edit-key="hero_title" data-edit-section="hero">
         Юридическая помощь в&nbsp;Ярославской области
       </h1>
-
-      <p class="hero__text reveal reveal-delay-2" id="hero-subtitle">
+      <p class="hero__text reveal reveal-delay-2" id="hero-subtitle" data-edit-key="hero_subtitle" data-edit-section="hero">
         Помогаем решать юридические вопросы: от&nbsp;банкротства и&nbsp;долгов до&nbsp;семейных и&nbsp;трудовых споров. Первая консультация бесплатно.
       </p>
-
       <div class="hero__buttons reveal reveal-delay-2">
-        <a href="#form" class="btn btn--primary btn--lg" id="hero-btn">Получить бесплатную консультацию</a>
-        <a href="tel:+74852000000" class="btn btn--outline btn--lg" data-phone>Позвонить юристу</a>
+        <a href="#form" class="btn btn--primary btn--lg" id="hero-btn" data-edit-key="hero_button" data-edit-section="hero">Получить бесплатную консультацию</a>
+        <a href="tel:+74852000000" class="btn btn--outline btn--lg" data-phone id="hero-call-btn" data-edit-key="hero_call_button" data-edit-section="hero">Позвонить юристу</a>
       </div>
-
-      <p class="hero__note reveal reveal-delay-3" id="hero-note">Ответим на&nbsp;вопросы и&nbsp;оценим вашу ситуацию</p>
-
-      <div class="hero__trust reveal reveal-delay-3">
+      <p class="hero__note reveal reveal-delay-3" id="hero-note" data-edit-key="hero_note" data-edit-section="hero">Ответим на&nbsp;вопросы и&nbsp;оценим вашу ситуацию</p>
+      <div class="hero__trust reveal reveal-delay-3" id="hero-trust" data-edit-key="hero_trust" data-edit-section="hero">
         <span class="hero__trust-item"><span class="hero__trust-dot"></span> Конфиденциально</span>
         <span class="hero__trust-item"><span class="hero__trust-dot"></span> Без давления</span>
         <span class="hero__trust-item"><span class="hero__trust-dot"></span> По закону</span>
       </div>
     </div>
-
     <div class="hero__image reveal">
-      <img src="images/Фото юриста.jpg" alt="Юрист компании НАРБЕРА в офисе" class="hero__photo" loading="lazy" id="hero-photo">
+      <img src="images/Фото юриста.jpg" alt="Юрист компании НАРБЕРА" class="hero__photo" loading="lazy" id="hero-photo" data-edit-key="hero_image" data-edit-section="hero-image">
       <div class="hero__image-badge">
         <div class="hero__image-badge-icon">&#9878;</div>
         <div>
-          <div class="hero__image-badge-text">Юридическая практика</div>
-          <div class="hero__image-badge-sub">Качественные и честные услуги</div>
+          <div class="hero__image-badge-text" id="hero-image-badge-text" data-edit-key="hero_image_badge_text" data-edit-section="hero">Юридическая практика</div>
+          <div class="hero__image-badge-sub" id="hero-image-badge-sub" data-edit-key="hero_image_badge_sub" data-edit-section="hero">Качественные и честные услуги</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== PROBLEMS ===================== -->
+<!-- PROBLEMS -->
 <section class="section section--alt" id="problems">
   <div class="container">
     <div class="section__header">
-      <h2 class="section__title reveal">Юридические вопросы, которые требуют решения</h2>
-      <p class="section__subtitle reveal reveal-delay-1">
+      <h2 class="section__title reveal" id="problems-title" data-edit-key="problems_title" data-edit-section="problems">Юридические вопросы, которые требуют решения</h2>
+      <p class="section__subtitle reveal reveal-delay-1" id="problems-subtitle" data-edit-key="problems_subtitle" data-edit-section="problems">
         Жизнь сталкивает с&nbsp;ситуациями, где нужна профессиональная помощь. Мы&nbsp;поможем разобраться
       </p>
     </div>
-
     <div class="problems-grid">
-      <div class="problem-card reveal">
-        <div class="problem-card__icon">&#128200;</div>
-        <p class="problem-card__text">Несколько кредитов, платежи по&nbsp;которым превышают доход</p>
-      </div>
-      <div class="problem-card reveal reveal-delay-1">
-        <div class="problem-card__icon">&#9200;</div>
-        <p class="problem-card__text">Просрочки по&nbsp;платежам и&nbsp;штрафы, которые только увеличивают сумму долга</p>
-      </div>
-      <div class="problem-card reveal reveal-delay-2">
-        <div class="problem-card__icon">&#128179;</div>
-        <p class="problem-card__text">Микрозаймы с&nbsp;высокими процентами, из&nbsp;которых сложно выйти</p>
-      </div>
-      <div class="problem-card reveal">
-        <div class="problem-card__icon">&#128222;</div>
-        <p class="problem-card__text">Постоянные звонки от&nbsp;банков и&nbsp;коллекторов, давление и&nbsp;угрозы</p>
-      </div>
-      <div class="problem-card reveal reveal-delay-1">
-        <div class="problem-card__icon">&#128220;</div>
-        <p class="problem-card__text">Исполнительные производства, арест счетов и&nbsp;имущества</p>
-      </div>
-      <div class="problem-card reveal reveal-delay-2">
-        <div class="problem-card__icon">&#128176;</div>
-        <p class="problem-card__text">Дохода не&nbsp;хватает на&nbsp;погашение долгов, ситуация ухудшается</p>
-      </div>
-      <div class="problem-card reveal">
-        <div class="problem-card__icon">&#128104;&#8205;&#128105;</div>
-        <p class="problem-card__text">Семейный спор: раздел имущества, алименты, определение порядка общения с&nbsp;ребёнком</p>
-      </div>
-      <div class="problem-card reveal reveal-delay-1">
-        <div class="problem-card__icon">&#128188;</div>
-        <p class="problem-card__text">Трудовой спор: увольнение, невыплата зарплаты, восстановление на&nbsp;работе</p>
-      </div>
-      <div class="problem-card reveal reveal-delay-2">
-        <div class="problem-card__icon">&#127968;</div>
-        <p class="problem-card__text">Жилищный вопрос: прописка, выселение, споры с&nbsp;соседями, управляющей компанией</p>
-      </div>
+      <div class="problem-card reveal"><div class="problem-card__icon">&#128200;</div><p class="problem-card__text">Несколько кредитов, платежи по&nbsp;которым превышают доход</p></div>
+      <div class="problem-card reveal reveal-delay-1"><div class="problem-card__icon">&#9200;</div><p class="problem-card__text">Просрочки по&nbsp;платежам и&nbsp;штрафы, которые только увеличивают сумму долга</p></div>
+      <div class="problem-card reveal reveal-delay-2"><div class="problem-card__icon">&#128179;</div><p class="problem-card__text">Микрозаймы с&nbsp;высокими процентами, из&nbsp;которых сложно выйти</p></div>
+      <div class="problem-card reveal"><div class="problem-card__icon">&#128222;</div><p class="problem-card__text">Постоянные звонки от&nbsp;банков и&nbsp;коллекторов, давление и&nbsp;угрозы</p></div>
+      <div class="problem-card reveal reveal-delay-1"><div class="problem-card__icon">&#128220;</div><p class="problem-card__text">Исполнительные производства, арест счетов и&nbsp;имущества</p></div>
+      <div class="problem-card reveal reveal-delay-2"><div class="problem-card__icon">&#128176;</div><p class="problem-card__text">Дохода не&nbsp;хватает на&nbsp;погашение долгов, ситуация ухудшается</p></div>
+      <div class="problem-card reveal"><div class="problem-card__icon">&#128104;&#8205;&#128105;</div><p class="problem-card__text">Семейный спор: раздел имущества, алименты, определение порядка общения с&nbsp;ребёнком</p></div>
+      <div class="problem-card reveal reveal-delay-1"><div class="problem-card__icon">&#128188;</div><p class="problem-card__text">Трудовой спор: увольнение, невыплата зарплаты, восстановление на&nbsp;работе</p></div>
+      <div class="problem-card reveal reveal-delay-2"><div class="problem-card__icon">&#127968;</div><p class="problem-card__text">Жилищный вопрос: прописка, выселение, споры с&nbsp;соседями, управляющей компанией</p></div>
     </div>
-
     <div class="problems-bottom reveal">
-      <a href="#form" class="btn btn--primary btn--lg">Разобрать мою ситуацию</a>
+      <a href="#form" class="btn btn--primary btn--lg" id="problems-button" data-edit-key="problems_button" data-edit-section="problems">Разобрать мою ситуацию</a>
     </div>
   </div>
 </section>
 
-<!-- ===================== SERVICES ===================== -->
+<!-- SERVICES -->
 <section class="section" id="services">
   <div class="container">
     <div class="section__header">
-      <h2 class="section__title reveal">Наши услуги</h2>
-      <p class="section__subtitle reveal reveal-delay-1">
+      <h2 class="section__title reveal" id="services-title" data-edit-key="services_title" data-edit-section="services">Наши услуги</h2>
+      <p class="section__subtitle reveal reveal-delay-1" id="services-subtitle" data-edit-key="services_subtitle" data-edit-section="services">
         Полный спектр юридической помощи для граждан в&nbsp;Ярославской области
       </p>
     </div>
-
-    <div class="services-grid" id="services-list">
-    </div>
+    <div class="services-grid" id="services-list"></div>
   </div>
 </section>
 
-<!-- ===================== ADVANTAGES ===================== -->
+<!-- ADVANTAGES -->
 <section class="section section--alt" id="advantages">
   <div class="container">
     <div class="section__header">
-      <h2 class="section__title reveal">Почему выбирают нас</h2>
-      <p class="section__subtitle reveal reveal-delay-1">
+      <h2 class="section__title reveal" id="advantages-title" data-edit-key="advantages_title" data-edit-section="advantages">Почему выбирают нас</h2>
+      <p class="section__subtitle reveal reveal-delay-1" id="advantages-subtitle" data-edit-key="advantages_subtitle" data-edit-section="advantages">
         Мы&nbsp;создаём условия, при которых вы&nbsp;можете сосредоточиться на&nbsp;важном
       </p>
     </div>
-
-    <div class="advantages-grid">
-      <div class="advantage-card reveal">
-        <div class="advantage-card__icon">&#128172;</div>
-        <h3 class="advantage-card__title">Понятно объясняем</h3>
-        <p class="advantage-card__text">Без сложной юридической терминологии. Вы&nbsp;понимаете, что происходит на&nbsp;каждом этапе.</p>
-      </div>
-      <div class="advantage-card reveal reveal-delay-1">
-        <div class="advantage-card__icon">&#128101;</div>
-        <h3 class="advantage-card__title">Сопровождаем лично</h3>
-        <p class="advantage-card__text">Вы&nbsp;знаете, кто занимается вашим делом. Один юрист ведёт дело от&nbsp;начала до&nbsp;конца.</p>
-      </div>
-      <div class="advantage-card reveal reveal-delay-2">
-        <div class="advantage-card__icon">&#9878;</div>
-        <h3 class="advantage-card__title">Работаем по&nbsp;закону</h3>
-        <p class="advantage-card__text">Без сомнительных схем и&nbsp;обещаний невозможного. Только законные варианты решения.</p>
-      </div>
-      <div class="advantage-card reveal">
-        <div class="advantage-card__icon">&#128274;</div>
-        <h3 class="advantage-card__title">Конфиденциально</h3>
-        <p class="advantage-card__text">Информация о&nbsp;вашей ситуации не&nbsp;разглашается третьим лицам без вашего согласия.</p>
-      </div>
-      <div class="advantage-card reveal reveal-delay-1">
-        <div class="advantage-card__icon">&#128196;</div>
-        <h3 class="advantage-card__title">Прозрачные условия</h3>
-        <p class="advantage-card__text">Стоимость и&nbsp;порядок работы объясняются до&nbsp;начала сотрудничества. Без скрытых платежей.</p>
-      </div>
-      <div class="advantage-card reveal reveal-delay-2">
-        <div class="advantage-card__icon">&#128225;</div>
-        <h3 class="advantage-card__title">Всегда на&nbsp;связи</h3>
-        <p class="advantage-card__text">Вы&nbsp;можете задать вопрос специалисту и&nbsp;получить ответ в&nbsp;удобное время.</p>
-      </div>
-    </div>
+    <div class="advantages-grid" id="advantages-list"></div>
   </div>
 </section>
 
-<!-- ===================== EXPERT ===================== -->
+<!-- EXPERT -->
 <section class="section" id="expert">
   <div class="container">
     <div class="expert__grid">
       <div class="expert__photo reveal">
         <img src="images/Фото юриста.jpg" alt="Юрист компании НАРБЕРА" class="expert__photo-img" loading="lazy" id="expert-photo">
       </div>
-
       <div>
         <h2 class="expert__name reveal" id="expert-name">Профессиональная команда</h2>
         <p class="expert__role reveal reveal-delay-1" id="expert-role">Юристы с опытом в различных отраслях права</p>
-        <p class="expert__bio reveal reveal-delay-2" id="expert-bio">
-          Мы&nbsp;специализируемся на&nbsp;банкротстве физических лиц, но&nbsp;также оказываем полный спектр юридических услуг для граждан. Индивидуальный подход к&nbsp;каждому клиенту, честная оценка перспектив и&nbsp;прозрачные условия сотрудничества.
-        </p>
-
-        <div class="expert__stats reveal reveal-delay-2" id="expert-stats">
-          <div class="expert__stat">
-            <div class="expert__stat-value">10+</div>
-            <div class="expert__stat-label">лет практики</div>
-          </div>
-          <div class="expert__stat">
-            <div class="expert__stat-value">500+</div>
-            <div class="expert__stat-label">консультаций</div>
-          </div>
-          <div class="expert__stat">
-            <div class="expert__stat-value">98%</div>
-            <div class="expert__stat-label">довольных клиентов</div>
-          </div>
-        </div>
-
-        <p class="expert__disclaimer reveal reveal-delay-3">
-          * Показатели являются примерными. В&nbsp;реальной версии замените на&nbsp;актуальную информацию.
-        </p>
-
+        <p class="expert__bio reveal reveal-delay-2" id="expert-bio">Мы&nbsp;специализируемся на&nbsp;банкротстве физических лиц.</p>
+        <div class="expert__stats reveal reveal-delay-2" id="expert-stats"></div>
         <div class="reveal reveal-delay-3" style="margin-top: 24px;">
           <a href="#form" class="btn btn--primary">Записаться на консультацию</a>
         </div>
@@ -275,424 +162,102 @@
   </div>
 </section>
 
-<!-- ===================== PROCESS ===================== -->
+<!-- PROCESS -->
 <section class="section section--alt" id="process">
   <div class="container">
     <div class="section__header">
-      <h2 class="section__title reveal">Как проходит работа</h2>
-      <p class="section__subtitle reveal reveal-delay-1">
+      <h2 class="section__title reveal" id="process-title" data-edit-key="process_title" data-edit-section="process">Как проходит работа</h2>
+      <p class="section__subtitle reveal reveal-delay-1" id="process-subtitle" data-edit-key="process_subtitle" data-edit-section="process">
         Пошаговый процесс, который делает ситуацию понятной и&nbsp;управляемой
       </p>
     </div>
-
-    <div class="process-steps">
-      <div class="process-step reveal">
-        <div class="process-step__num">01</div>
-        <div class="process-step__content">
-          <h3 class="process-step__title">Консультация</h3>
-          <p class="process-step__text">Разбираем ситуацию и&nbsp;отвечаем на&nbsp;основные вопросы. Бесплатно и&nbsp;без обязательств.</p>
-        </div>
-      </div>
-
-      <div class="process-step reveal reveal-delay-1">
-        <div class="process-step__num">02</div>
-        <div class="process-step__content">
-          <h3 class="process-step__title">Анализ</h3>
-          <p class="process-step__text">Изучаем документы, обстоятельства и&nbsp;формируем объективную картину вашей ситуации.</p>
-        </div>
-      </div>
-
-      <div class="process-step reveal reveal-delay-2">
-        <div class="process-step__num">03</div>
-        <div class="process-step__content">
-          <h3 class="process-step__title">Стратегия</h3>
-          <p class="process-step__text">Разрабатываем план действий и&nbsp;определяем наиболее эффективный путь решения.</p>
-        </div>
-      </div>
-
-      <div class="process-step reveal">
-        <div class="process-step__num">04</div>
-        <div class="process-step__content">
-          <h3 class="process-step__title">Сопровождение</h3>
-          <p class="process-step__text">Представляем ваши интересы в&nbsp;суде, при общении с&nbsp;кредиторами, приставами и&nbsp;другими сторонами.</p>
-        </div>
-      </div>
-
-      <div class="process-step reveal reveal-delay-1">
-        <div class="process-step__num">05</div>
-        <div class="process-step__content">
-          <h3 class="process-step__title">Завершение</h3>
-          <p class="process-step__text">Подводим итоги процедуры и&nbsp;объясняем дальнейшие действия.</p>
-        </div>
-      </div>
-    </div>
-
+    <div class="process-steps" id="steps-list"></div>
     <div class="process-cta reveal">
-      <a href="#form" class="btn btn--primary btn--lg">Начать с бесплатной консультации</a>
+      <a href="#form" class="btn btn--primary btn--lg" id="process-cta" data-edit-key="process_cta" data-edit-section="process">Начать с бесплатной консультации</a>
     </div>
   </div>
 </section>
 
-<!-- ===================== WHO NEEDS ===================== -->
+<!-- WHO NEEDS -->
 <section class="section" id="who-needs">
   <div class="container">
     <div class="section__header">
-      <h2 class="section__title reveal">Возможно, вам стоит рассмотреть банкротство, если…</h2>
-      <p class="section__subtitle reveal reveal-delay-1">
+      <h2 class="section__title reveal" id="who-title" data-edit-key="who_title" data-edit-section="who">Возможно, вам стоит рассмотреть банкротство, если…</h2>
+      <p class="section__subtitle reveal reveal-delay-1" id="who-subtitle" data-edit-key="who_subtitle" data-edit-section="who">
         Не&nbsp;автоматическое решение для всех, но&nbsp;серьёзный шаг для тех, кто столкнулся с&nbsp;одной или несколькими ситуациями
       </p>
     </div>
-
     <div class="who-grid">
-      <div class="who-item reveal">
-        <div class="who-item__check">&#10003;</div>
-        <p class="who-item__text">Общая сумма долга значительно превышает ваш ежемесячный доход</p>
-      </div>
-      <div class="who-item reveal reveal-delay-1">
-        <div class="who-item__check">&#10003;</div>
-        <p class="who-item__text">Вы&nbsp;не&nbsp;можете платить по&nbsp;кредитам и&nbsp;задолженность постоянно растёт</p>
-      </div>
-      <div class="who-item reveal reveal-delay-2">
-        <div class="who-item__check">&#10003;</div>
-        <p class="who-item__text">Судебные приставы арестовали счета или начали взыскание</p>
-      </div>
-      <div class="who-item reveal">
-        <div class="who-item__check">&#10003;</div>
-        <p class="who-item__text">Банки и&nbsp;коллекторы звонят каждый день и&nbsp;создают давление</p>
-      </div>
-      <div class="who-item reveal reveal-delay-1">
-        <div class="who-item__check">&#10003;</div>
-        <p class="who-item__text">Вы&nbsp;рассматриваете возможность микрозайма, чтобы погасить предыдущий кредит</p>
-      </div>
-      <div class="who-item reveal reveal-delay-2">
-        <div class="who-item__check">&#10003;</div>
-        <p class="who-item__text">Ваше финансовое положение не&nbsp;улучшается и&nbsp;нет видимых перспектив</p>
-      </div>
-      <div class="who-item reveal">
-        <div class="who-item__check">&#10003;</div>
-        <p class="who-item__text">Вы&nbsp;хотите понять свои права и&nbsp;законные возможности для решения ситуации</p>
-      </div>
-      <div class="who-item reveal reveal-delay-1">
-        <div class="who-item__check">&#10003;</div>
-        <p class="who-item__text">Вы&nbsp;находитесь в&nbsp;Ярославской области и&nbsp;вам нужна местная юридическая поддержка</p>
-      </div>
+      <div class="who-item reveal"><div class="who-item__check">&#10003;</div><p class="who-item__text">Общая сумма долга значительно превышает ваш ежемесячный доход</p></div>
+      <div class="who-item reveal reveal-delay-1"><div class="who-item__check">&#10003;</div><p class="who-item__text">Вы&nbsp;не&nbsp;можете платить по&nbsp;кредитам и&nbsp;задолженность постоянно растёт</p></div>
+      <div class="who-item reveal reveal-delay-2"><div class="who-item__check">&#10003;</div><p class="who-item__text">Судебные приставы арестовали счета или начали взыскание</p></div>
+      <div class="who-item reveal"><div class="who-item__check">&#10003;</div><p class="who-item__text">Банки и&nbsp;коллекторы звонят каждый день и&nbsp;создают давление</p></div>
+      <div class="who-item reveal reveal-delay-1"><div class="who-item__check">&#10003;</div><p class="who-item__text">Вы&nbsp;рассматриваете возможность микрозайма, чтобы погасить предыдущий кредит</p></div>
+      <div class="who-item reveal reveal-delay-2"><div class="who-item__check">&#10003;</div><p class="who-item__text">Ваше финансовое положение не&nbsp;улучшается и&nbsp;нет видимых перспектив</p></div>
+      <div class="who-item reveal"><div class="who-item__check">&#10003;</div><p class="who-item__text">Вы&nbsp;хотите понять свои права и&nbsp;законные возможности для решения ситуации</p></div>
+      <div class="who-item reveal reveal-delay-1"><div class="who-item__check">&#10003;</div><p class="who-item__text">Вы&nbsp;находитесь в&nbsp;Ярославской области и&nbsp;вам нужна местная юридическая поддержка</p></div>
     </div>
-
     <div class="who-cta reveal">
-      <a href="#form" class="btn btn--primary btn--lg">Проверить мою ситуацию</a>
+      <a href="#form" class="btn btn--primary btn--lg" id="who-cta" data-edit-key="who_cta" data-edit-section="who">Проверить мою ситуацию</a>
     </div>
   </div>
 </section>
 
-<!-- ===================== CASES ===================== -->
+<!-- CASES -->
 <section class="section section--alt" id="cases">
   <div class="container">
     <div class="section__header">
-      <h2 class="section__title reveal">Демонстрационные примеры</h2>
-      <p class="section__subtitle reveal reveal-delay-1">
+      <h2 class="section__title reveal" id="cases-title" data-edit-key="cases_title" data-edit-section="cases">Демонстрационные примеры</h2>
+      <p class="section__subtitle reveal reveal-delay-1" id="cases-subtitle" data-edit-key="cases_subtitle" data-edit-section="cases">
         Ниже представлены обобщённые примеры типичных ситуаций. Имена и&nbsp;детали изменены.
       </p>
     </div>
-
-    <div class="cases-grid">
-      <!-- Case 1 -->
-      <div class="case-card reveal">
-        <div class="case-card__header">
-          <span class="case-card__badge">Демонстрационный пример</span>
-          <h3 class="case-card__title">Три кредита и микрозайм</h3>
-        </div>
-        <div class="case-card__body">
-          <div class="case-card__section">
-            <p class="case-card__label">Ситуация</p>
-            <p class="case-card__value">Женщина 38&nbsp;лет, один воспитывает ребёнка. Три потребительских кредита и&nbsp;микрозайм. Общая сумма задолженности — более 2&nbsp;млн рублей.</p>
-          </div>
-          <div class="case-card__section">
-            <p class="case-card__label">Проблема</p>
-            <p class="case-card__value">Ежемесячные платежи превышали доход в&nbsp;два раза. Начались просрочки, звонки от&nbsp;коллекторов.</p>
-          </div>
-          <div class="case-card__section">
-            <p class="case-card__label">Что сделано</p>
-            <p class="case-card__value">Проведена оценка перспектив, подготовлены документы, подано заявление на&nbsp;банкротство, сопровождение в&nbsp;суде.</p>
-          </div>
-          <div class="case-card__section case-card__result">
-            <p class="case-card__label">Результат</p>
-            <p class="case-card__value">Процедура завершена. Долги списаны в&nbsp;установленном законом порядке.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Case 2 -->
-      <div class="case-card reveal reveal-delay-1">
-        <div class="case-card__header">
-          <span class="case-card__badge">Демонстрационный пример</span>
-          <h3 class="case-card__title">Исполнительные производства</h3>
-        </div>
-        <div class="case-card__body">
-          <div class="case-card__section">
-            <p class="case-card__label">Ситуация</p>
-            <p class="case-card__value">Мужчина 42&nbsp;года, работает на&nbsp;заводе. Несколько исполнительных производств, арест зарплатной карты.</p>
-          </div>
-          <div class="case-card__section">
-            <p class="case-card__label">Проблема</p>
-            <p class="case-card__value">С&nbsp;зарплаты удерживают maximum по&nbsp;закону, но&nbsp;долги продолжают расти из-за процентов.</p>
-          </div>
-          <div class="case-card__section">
-            <p class="case-card__label">Что сделано</p>
-            <p class="case-card__value">Проанализированы все исполнительные документы, подготовлены документы для банкротства.</p>
-          </div>
-          <div class="case-card__section case-card__result">
-            <p class="case-card__label">Результат</p>
-            <p class="case-card__value">Банкротство завершено. Исполнительные производства прекращены.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Case 3 -->
-      <div class="case-card reveal reveal-delay-2">
-        <div class="case-card__header">
-          <span class="case-card__badge">Демонстрационный пример</span>
-          <h3 class="case-card__title">Трудовой спор: восстановление на работе</h3>
-        </div>
-        <div class="case-card__body">
-          <div class="case-card__section">
-            <p class="case-card__label">Ситуация</p>
-            <p class="case-card__value">Женщина 30&nbsp;лет, работает в&nbsp;организации 5&nbsp;лет. Уволена по&nbsp;инициативе работодателя без законных оснований.</p>
-          </div>
-          <div class="case-card__section">
-            <p class="case-card__label">Проблема</p>
-            <p class="case-card__value">Работодатель отказался выплачивать выходное пособие и&nbsp;не&nbsp;выдал трудовую книжку.</p>
-          </div>
-          <div class="case-card__section">
-            <p class="case-card__label">Что сделано</p>
-            <p class="case-card__value">Подан иск о&nbsp;восстановлении на&nbsp;работе, взыскании заработной платы за&nbsp;вынужденный прогул и&nbsp;компенсации морального вреда.</p>
-          </div>
-          <div class="case-card__section case-card__result">
-            <p class="case-card__label">Результат</p>
-            <p class="case-card__value">Суд восстановил на&nbsp;работе. Взыскана заработная плата и&nbsp;компенсация.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="cases-grid" id="cases-list"></div>
   </div>
 </section>
 
-<!-- ===================== TESTIMONIALS ===================== -->
+<!-- REVIEWS -->
 <section class="section" id="testimonials">
   <div class="container">
     <div class="section__header">
-      <h2 class="section__title reveal">Отзывы</h2>
-      <p class="section__subtitle reveal reveal-delay-1">
+      <h2 class="section__title reveal" id="reviews-title" data-edit-key="reviews_title" data-edit-section="reviews">Отзывы</h2>
+      <p class="section__subtitle reveal reveal-delay-1" id="reviews-subtitle" data-edit-key="reviews_subtitle" data-edit-section="reviews">
         Демонстрационные отзывы для макета. В&nbsp;реальной версии замените на&nbsp;настоящие отзывы клиентов.
       </p>
     </div>
-
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-card__header">
-          <div class="testimonial-card__avatar">ЕС</div>
-          <div>
-            <div class="testimonial-card__name">Елена С.</div>
-            <div class="testimonial-card__meta">Ярославль &middot; Март 2025</div>
-          </div>
-        </div>
-        <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-card__text">
-          Долго не&nbsp;могла решиться на&nbsp;первый шаг. На&nbsp;консультации мне всё подробно объяснили без&nbsp;давления. Теперь я&nbsp;понимаю, что мою ситуацию можно решить.
-        </p>
-        <span class="testimonial-card__badge">* Демонстрационный отзыв для макета</span>
-      </div>
-
-      <div class="testimonial-card reveal reveal-delay-1">
-        <div class="testimonial-card__header">
-          <div class="testimonial-card__avatar">АК</div>
-          <div>
-            <div class="testimonial-card__name">Андрей К.</div>
-            <div class="testimonial-card__meta">Тутаев &middot; Январь 2025</div>
-          </div>
-        </div>
-        <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-card__text">
-          Всё было прозрачно. С&nbsp;самого начала объяснили стоимость, порядок и&nbsp;сроки. Никаких сюрпризов. Рекомендую.
-        </p>
-        <span class="testimonial-card__badge">* Демонстрационный отзыв для макета</span>
-      </div>
-
-      <div class="testimonial-card reveal reveal-delay-2">
-        <div class="testimonial-card__header">
-          <div class="testimonial-card__avatar">МВ</div>
-          <div>
-            <div class="testimonial-card__name">Мария В.</div>
-            <div class="testimonial-card__meta">Рыбинск &middot; Апрель 2025</div>
-          </div>
-        </div>
-        <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-card__text">
-          Меня беспокоило, что всё сложно и&nbsp;непонятно. Но&nbsp;юрист нашёл подходящий язык и&nbsp;помог разобраться. Спасибо за&nbsp;человеческое отношение.
-        </p>
-        <span class="testimonial-card__badge">* Демонстрационный отзыв для макета</span>
-      </div>
-    </div>
+    <div class="testimonials-grid" id="reviews-list"></div>
   </div>
 </section>
 
-<!-- ===================== FAQ ===================== -->
+<!-- FAQ -->
 <section class="section section--alt" id="faq">
   <div class="container">
     <div class="section__header">
-      <h2 class="section__title reveal">Часто задаваемые вопросы</h2>
-      <p class="section__subtitle reveal reveal-delay-1">
+      <h2 class="section__title reveal" id="faq-title" data-edit-key="faq_title" data-edit-section="faq">Часто задаваемые вопросы</h2>
+      <p class="section__subtitle reveal reveal-delay-1" id="faq-subtitle" data-edit-key="faq_subtitle" data-edit-section="faq">
         Ответы на&nbsp;самые распространённые вопросы о&nbsp;наших услугах
       </p>
     </div>
-
-    <div class="faq-list">
-      <div class="faq-item reveal">
-        <button class="faq-item__question" aria-expanded="false">
-          Что такое банкротство физического лица?
-          <span class="faq-item__icon">+</span>
-        </button>
-        <div class="faq-item__answer" role="region">
-          <div class="faq-item__answer-inner">
-            Банкротство физического лица — это судебная процедура, которая позволяет гражданину, не&nbsp;способному исполнить денежные обязательства, решить вопрос с&nbsp;долгами в&nbsp;установленном законом порядке. Процедура регулируется Федеральным законом №&nbsp;127-ФЗ «О&nbsp;несостоятельности (банкротстве)». Она не&nbsp;означает автоматического списания всех долгов — суд рассматривает каждый случай индивидуально.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item reveal reveal-delay-1">
-        <button class="faq-item__question" aria-expanded="false">
-          Обязательно ли идти в суд?
-          <span class="faq-item__icon">+</span>
-        </button>
-        <div class="faq-item__answer" role="region">
-          <div class="faq-item__answer-inner">
-            Да, процедура банкротства физического лица проходит в&nbsp;судебном порядке. Заявление подаётся в&nbsp;арбитражный суд по&nbsp;месту жительства. Однако наличие юриста существенно упрощает процесс: специалист готовит документы, представляет ваши интересы и&nbsp;сопровождает на&nbsp;всех этапах.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item reveal">
-        <button class="faq-item__question" aria-expanded="false">
-          Можно ли сохранить имущество?
-          <span class="faq-item__icon">+</span>
-        </button>
-        <div class="faq-item__answer" role="region">
-          <div class="faq-item__answer-inner">
-            Закон предусматривает перечень имущества, которое не&nbsp;подлежит изъятию. В&nbsp;частности, это единственное жильё (при условии, что оно не&nbsp;находится в&nbsp;ипотеке), предметы обычной домашней обстановки, продукты питания и&nbsp;некоторые другие категории. Конкретный результат зависит от&nbsp;обстоятельств дела.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item reveal reveal-delay-1">
-        <button class="faq-item__question" aria-expanded="false">
-          Что будет с кредитами?
-          <span class="faq-item__icon">+</span>
-        </button>
-        <div class="faq-item__answer" role="region">
-          <div class="faq-item__answer-inner">
-            В&nbsp;случае успешного завершения процедуры банкротства, оставшиеся долги по&nbsp;кредитам могут быть списаны в&nbsp;порядке, предусмотренном законом. Исключение составляют некоторые виды задолженностей: алименты, возмещение вреда здоровью, задолженность по&nbsp;зарплате, штрафы за&nbsp;уголовные преступления. Каждый случай рассматривается индивидуально.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item reveal">
-        <button class="faq-item__question" aria-expanded="false">
-          Сколько длится процедура?
-          <span class="faq-item__icon">+</span>
-        </button>
-        <div class="faq-item__answer" role="region">
-          <div class="faq-item__answer-inner">
-            Сроки зависят от&nbsp;конкретных обстоятельств дела. Судебное заседание по&nbsp;вопросу банкротства может занять от&nbsp;нескольких месяцев до&nbsp;более длительного срока. На&nbsp;продолжительность влияют количество кредиторов, объём документации и&nbsp;другие факторы. Юрист может заблаговременно оценить примерные сроки.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item reveal reveal-delay-1">
-        <button class="faq-item__question" aria-expanded="false">
-          Сколько стоит сопровождение?
-          <span class="faq-item__icon">+</span>
-        </button>
-        <div class="faq-item__answer" role="region">
-          <div class="faq-item__answer-inner">
-            Стоимость юридического сопровождения зависит от&nbsp;сложности дела и&nbsp;объёма работ. На&nbsp;бесплатной первичной консультации мы&nbsp;можем обсудить вашу ситуацию и&nbsp;назвать примерную стоимость. Окончательная стоимость фиксируется в&nbsp;договоре до&nbsp;начала сотрудничества.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item reveal">
-        <button class="faq-item__question" aria-expanded="false">
-          Можно ли оформить рассрочку?
-          <span class="faq-item__icon">+</span>
-        </button>
-        <div class="faq-item__answer" role="region">
-          <div class="faq-item__answer-inner">
-            Да, в&nbsp;некоторых случаях суд может предоставить рассрочку по&nbsp;уплате судебных расходов. Кроме того, на&nbsp;стадии исполнения решения суда также предусмотрены механизмы рассрочки. Юрист поможет оценить, какой вариант наиболее подходит в&nbsp;вашем случае.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item reveal reveal-delay-1">
-        <button class="faq-item__question" aria-expanded="false">
-          Что происходит с банковскими счетами?
-          <span class="faq-item__icon">+</span>
-        </button>
-        <div class="faq-item__answer" role="region">
-          <div class="faq-item__answer-inner">
-            С&nbsp;момента введения процедуры банкротства действуют определённые ограничения на&nbsp;распоряжение счетами. Однако закон также предусматривает право на&nbsp;ведение расчётного счёта для повседневных нужд. Все нюансы зависят от&nbsp;конкретных обстоятельств и&nbsp;этапа процедуры.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item reveal">
-        <button class="faq-item__question" aria-expanded="false">
-          Можно ли пройти процедуру, если официально работаешь?
-          <span class="faq-item__icon">+</span>
-        </button>
-        <div class="faq-item__answer" role="region">
-          <div class="faq-item__answer-inner">
-            Да, наличие официального трудоустройства не&nbsp;является препятствием для банкротства. Более того, стабильный доход может быть учтён при оценке перспектив дела. Закон не&nbsp;ограничивает право на&nbsp;банкротство в&nbsp;зависимости от&nbsp;наличия или отсутствия работы.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item reveal reveal-delay-1">
-        <button class="faq-item__question" aria-expanded="false">
-          Что будет после завершения процедуры?
-          <span class="faq-item__icon">+</span>
-        </button>
-        <div class="faq-item__answer" role="region">
-          <div class="faq-item__answer-inner">
-            После завершения процедуры банкротства вы&nbsp;получаете судебный акт, который устанавливает новые правила взаимодействия с&nbsp;кредиторами. В&nbsp;течение определённого срока действуют ограничения на&nbsp;получение кредитов и&nbsp;занятие отдельными видами деятельности. Юрист подробно объяснит все последствия и&nbsp;поможет подготовиться к&nbsp;следующему этапу жизни.
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="faq-list" id="faq-list"></div>
   </div>
 </section>
 
-<!-- ===================== FORM ===================== -->
+<!-- FORM -->
 <section class="section form-section" id="form">
   <div class="container">
     <div class="section__header">
-      <h2 class="section__title reveal">Разберём вашу ситуацию на&nbsp;бесплатной консультации</h2>
-      <p class="section__subtitle reveal reveal-delay-1">
+      <h2 class="section__title reveal" id="form-title" data-edit-key="form_title" data-edit-section="form">Разберём вашу ситуацию на&nbsp;бесплатной консультации</h2>
+      <p class="section__subtitle reveal reveal-delay-1" id="form-subtitle" data-edit-key="form_subtitle" data-edit-section="form">
         Оставьте заявку, и&nbsp;мы&nbsp;свяжемся с&nbsp;вами в&nbsp;ближайшее время
       </p>
     </div>
-
     <div class="form-wrapper reveal reveal-delay-2">
       <form class="form" id="consultation-form">
         <div id="form-content">
           <div class="form__row">
-            <div class="form__group">
-              <label class="form__label" for="name">Ваше имя</label>
-              <input class="form__input" type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
-            </div>
-            <div class="form__group">
-              <label class="form__label" for="phone">Телефон</label>
-              <input class="form__input" type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
-            </div>
+            <div class="form__group"><label class="form__label" for="name">Ваше имя</label><input class="form__input" type="text" id="name" name="name" placeholder="Как к вам обращаться" required></div>
+            <div class="form__group"><label class="form__label" for="phone">Телефон</label><input class="form__input" type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required></div>
           </div>
-
           <div class="form__group">
             <label class="form__label">Удобный способ связи</label>
             <div class="form__contact-methods">
@@ -702,83 +267,56 @@
               <button type="button" class="form__contact-method">MAX</button>
             </div>
           </div>
-
-          <div class="form__group">
-            <label class="form__label" for="message">Кратко опишите ситуацию</label>
-            <textarea class="form__textarea" id="message" name="message" placeholder="Какие долги есть, что уже пробовали, что беспокоит больше всего" rows="4"></textarea>
-          </div>
-
+          <div class="form__group"><label class="form__label" for="message">Кратко опишите ситуацию</label><textarea class="form__textarea" id="message" name="message" placeholder="Какие долги есть, что уже пробовали, что беспокоит больше всего" rows="4"></textarea></div>
           <div class="form__consent">
             <input class="form__checkbox" type="checkbox" id="consent-checkbox">
-            <label class="form__consent-text" for="consent-checkbox">
-              Нажимая кнопку, вы&nbsp;соглашаетесь с&nbsp;<a href="consent.html">обработкой персональных данных</a> и&nbsp;<a href="privacy.html">политикой конфиденциальности</a>.
-            </label>
+            <label class="form__consent-text" for="consent-checkbox">Нажимая кнопку, вы&nbsp;соглашаетесь с&nbsp;<a href="consent.html">обработкой персональных данных</a> и&nbsp;<a href="privacy.html">политикой конфиденциальности</a>.</label>
           </div>
-
-          <button type="submit" class="btn btn--primary btn--lg form__submit" id="form-submit">Получить консультацию</button>
+          <button type="submit" class="btn btn--primary btn--lg form__submit" id="form-submit" data-edit-key="form_button" data-edit-section="form">Получить консультацию</button>
         </div>
-
         <div class="form__success" id="form-success">
           <div class="form__success-icon">&#10003;</div>
-          <h3 class="form__success-title">Спасибо! Заявка отправлена</h3>
-          <p class="form__success-text">Мы&nbsp;свяжемся с&nbsp;вами в&nbsp;ближайшее время для уточнения деталей.</p>
+          <h3 class="form__success-title" id="form-success-title" data-edit-key="form_success_title" data-edit-section="form">Спасибо! Заявка отправлена</h3>
+          <p class="form__success-text" id="form-success-text" data-edit-key="form_success_text" data-edit-section="form">Мы&nbsp;свяжемся с&nbsp;вами в&nbsp;ближайшее время для уточнения деталей.</p>
         </div>
       </form>
     </div>
   </div>
 </section>
 
-<!-- ===================== CONTACTS ===================== -->
+<!-- CONTACTS -->
 <section class="section section--alt" id="contacts">
   <div class="container">
     <div class="section__header">
-      <h2 class="section__title reveal">Контакты</h2>
-      <p class="section__subtitle reveal reveal-delay-1">
+      <h2 class="section__title reveal" id="contacts-title" data-edit-key="contacts_title" data-edit-section="contacts">Контакты</h2>
+      <p class="section__subtitle reveal reveal-delay-1" id="contacts-subtitle" data-edit-key="contacts_subtitle" data-edit-section="contacts">
         Свяжитесь с&nbsp;нами любым удобным способом или&nbsp;приходите на&nbsp;консультацию
       </p>
     </div>
-
     <div class="contact-grid">
       <div class="contact__info reveal">
         <div class="contact__item">
           <div class="contact__item-icon">&#128222;</div>
-          <div>
-            <p class="contact__item-label">Телефон</p>
-            <p class="contact__item-value"><a href="tel:+74852000000" data-phone>+7 (4852) 00-00-00</a></p>
-          </div>
+          <div><p class="contact__item-label">Телефон</p><p class="contact__item-value"><a href="tel:+74852000000" data-phone>+7 (4852) 00-00-00</a></p></div>
         </div>
-
         <div class="contact__item">
           <div class="contact__item-icon">&#9993;</div>
-          <div>
-            <p class="contact__item-label">Email</p>
-            <p class="contact__item-value"><a href="mailto:info@narbera.ru" data-email>info@narbera.ru</a></p>
-          </div>
+          <div><p class="contact__item-label">Email</p><p class="contact__item-value"><a href="mailto:info@narbera.ru" data-email>info@narbera.ru</a></p></div>
         </div>
-
         <div class="contact__item">
           <div class="contact__item-icon">&#128205;</div>
-          <div>
-            <p class="contact__item-label">Регион</p>
-            <p class="contact__item-value">Ярославская область, г.&nbsp;Ярославль</p>
-          </div>
+          <div><p class="contact__item-label">Регион</p><p class="contact__item-value" id="contact-region" data-edit-key="region" data-edit-section="contacts">Ярославская область, г.&nbsp;Ярославль</p></div>
         </div>
-
         <div class="contact__item">
           <div class="contact__item-icon">&#128337;</div>
-          <div>
-            <p class="contact__item-label">Часы работы</p>
-            <p class="contact__item-value">Пн–Пт: 9:00–18:00</p>
-          </div>
+          <div><p class="contact__item-label">Часы работы</p><p class="contact__item-value" id="contact-hours" data-edit-key="work_hours" data-edit-section="contacts">Пн–Пт: 9:00–18:00</p></div>
         </div>
-
         <div class="contact__socials">
           <a href="https://t.me/narbera" class="contact__social" data-telegram target="_blank" rel="noopener noreferrer">TG</a>
           <a href="https://vk.com/narbera" class="contact__social" data-vk target="_blank" rel="noopener noreferrer">VK</a>
           <a href="https://max.ru/narbera" class="contact__social" data-max target="_blank" rel="noopener noreferrer">MAX</a>
         </div>
       </div>
-
       <div class="contact__map reveal reveal-delay-1">
         <p>Карта будет добавлена при размещении на&nbsp;реальном сервере</p>
       </div>
@@ -786,29 +324,24 @@
   </div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer__top">
       <div>
-        <div class="footer__brand-name" data-company>НАРБЕРА</div>
-        <p class="footer__brand-text">
-          Качественные и честные услуги с заботой о клиенте. Юридическая помощь в&nbsp;Ярославской области.
-        </p>
+        <div class="footer__brand-name" data-company data-edit-key="company_name" data-edit-section="general">НАРБЕРА</div>
+        <p class="footer__brand-text" data-edit-key="motto" data-edit-section="general">Качественные и честные услуги с заботой о клиенте. Юридическая помощь в&nbsp;Ярославской области.</p>
         <p class="footer__brand-text" style="font-size:0.75rem; opacity:0.6;">
-          ИНН: 7600000000 &middot; ОГРН: 1237600000000
+          ИНН: <span id="footer-inn" data-edit-key="inn" data-edit-section="general">7600000000</span> &middot; ОГРН: <span id="footer-ogrn" data-edit-key="ogrn" data-edit-section="general">1237600000000</span>
         </p>
       </div>
-
       <div>
         <h4 class="footer__col-title">Услуги</h4>
         <a href="#services" class="footer__link">Все услуги</a>
-        <a href="#solutions" class="footer__link">Банкротство физических лиц</a>
         <a href="#process" class="footer__link">Порядок работы</a>
         <a href="#faq" class="footer__link">Частые вопросы</a>
         <a href="#form" class="footer__link">Бесплатная консультация</a>
       </div>
-
       <div>
         <h4 class="footer__col-title">Навигация</h4>
         <a href="#problems" class="footer__link">Юридические вопросы</a>
@@ -816,7 +349,6 @@
         <a href="#cases" class="footer__link">Примеры</a>
         <a href="#testimonials" class="footer__link">Отзывы</a>
       </div>
-
       <div>
         <h4 class="footer__col-title">Контакты</h4>
         <a href="tel:+74852000000" class="footer__link" data-phone>+7 (4852) 00-00-00</a>
@@ -826,7 +358,6 @@
         <a href="https://max.ru/narbera" class="footer__link" data-max target="_blank" rel="noopener noreferrer">MAX</a>
       </div>
     </div>
-
     <div class="footer__bottom">
       <span>&copy; <span data-year></span> <span data-company>НАРБЕРА</span>. Все права защищены.</span>
       <span>
@@ -835,41 +366,22 @@
         <a href="consent.html" class="footer__link" style="display:inline;">Согласие на обработку данных</a>
       </span>
     </div>
-
-    <p class="footer__disclaimer">
-      Информация, размещённая на&nbsp;данном сайте, носит информационный характер и&nbsp;не&nbsp;является публичной офертой. Она не&nbsp;заменяет индивидуальную юридическую консультацию. Для получения квалифицированной помощи обратитесь к&nbsp;специалисту.
-    </p>
+    <p class="footer__disclaimer" id="footer-disclaimer" data-edit-key="footer_disclaimer" data-edit-section="general">Информация, размещённая на&nbsp;данном сайте, носит информационный характер и&nbsp;не&nbsp;является публичной офертой.</p>
   </div>
 </footer>
 
-<!-- ===================== MOBILE BOTTOM BAR ===================== -->
+<!-- MOBILE BOTTOM BAR -->
 <div class="mobile-bar">
   <div class="mobile-bar__inner">
-    <a href="tel:+74852000000" class="mobile-bar__btn" data-phone>
-      <span class="mobile-bar__btn-icon">&#128222;</span>
-      Звонок
-    </a>
-    <a href="https://t.me/narbera" class="mobile-bar__btn" data-telegram target="_blank" rel="noopener noreferrer">
-      <span class="mobile-bar__btn-icon">&#9998;</span>
-      Telegram
-    </a>
-    <div class="mobile-bar__cta">
-      <a href="#form" class="btn btn--primary">Оставить заявку</a>
-    </div>
-    <a href="https://vk.com/narbera" class="mobile-bar__btn" data-vk target="_blank" rel="noopener noreferrer">
-      <span class="mobile-bar__btn-icon">VK</span>
-      VK
-    </a>
-    <a href="https://max.ru/narbera" class="mobile-bar__btn" data-max target="_blank" rel="noopener noreferrer">
-      <span class="mobile-bar__btn-icon">M</span>
-      MAX
-    </a>
+    <a href="tel:+74852000000" class="mobile-bar__btn" data-phone><span class="mobile-bar__btn-icon">&#128222;</span> Звонок</a>
+    <a href="https://t.me/narbera" class="mobile-bar__btn" data-telegram target="_blank" rel="noopener noreferrer"><span class="mobile-bar__btn-icon">&#9998;</span> Telegram</a>
+    <div class="mobile-bar__cta"><a href="#form" class="btn btn--primary">Оставить заявку</a></div>
+    <a href="https://vk.com/narbera" class="mobile-bar__btn" data-vk target="_blank" rel="noopener noreferrer"><span class="mobile-bar__btn-icon">VK</span> VK</a>
+    <a href="https://max.ru/narbera" class="mobile-bar__btn" data-max target="_blank" rel="noopener noreferrer"><span class="mobile-bar__btn-icon">M</span> MAX</a>
   </div>
 </div>
 
-<!-- Scripts -->
 <script src="js/config.js"></script>
 <script src="js/main.js"></script>
-
 </body>
 </html>
